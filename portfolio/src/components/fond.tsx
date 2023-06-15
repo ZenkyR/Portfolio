@@ -96,7 +96,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
     }
   };
 
-  useEffect(() => {
+useEffect(() => {
   const resizeHandler = () => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
@@ -110,11 +110,13 @@ const Canvas: React.FC<CanvasProps> = (props) => {
       const circles = circlesRef.current;
       circles.forEach((circle) => {
         const { x, y, radius } = circle;
-        const newX = (x / canvasWidth) * canvas.width;
-        const newY = (y / canvasHeight) * canvas.height;
+        const newX = (x / canvas.width) * canvasWidth;
+        const newY = (y / canvas.height) * canvasHeight;
+        const newRadius = (radius / Math.max(canvas.width, canvas.height)) * Math.max(canvasWidth, canvasHeight);
+
         circle.x = newX;
         circle.y = newY;
-        circle.radius = (radius / Math.max(canvasWidth, canvasHeight)) * Math.max(canvas.width, canvas.height);
+        circle.radius = newRadius;
       });
 
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
