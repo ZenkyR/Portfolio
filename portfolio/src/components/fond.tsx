@@ -96,8 +96,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
     }
   };
 
-useEffect(() => {
-  const resizeHandler = () => {
+  useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     const canvasWidth = window.innerWidth;
@@ -107,33 +106,25 @@ useEffect(() => {
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
 
-      const circles = circlesRef.current;
-      circles.forEach((circle) => {
-        const { x, y, radius } = circle;
-        const newX = (x / canvas.width) * canvasWidth;
-        const newY = (y / canvas.height) * canvasHeight;
-        const newRadius = (radius / Math.max(canvas.width, canvas.height)) * Math.max(canvasWidth, canvasHeight);
+      const circles: Circle[] = [];
+      const numberOfCircles = canvasWidth < 500 ? 50 : 100;
+      const maxRadius = canvasWidth < 500 ? 20 : 70;
+      for (let i = 0; i < numberOfCircles; i++) {
+        const x = Math.floor(Math.random() * canvasWidth);
+        const y = Math.floor(Math.random() * canvasHeight);
+        const radius = Math.floor(Math.random() * maxRadius);
+        const color = getRandomColor();
+        const dx = (Math.random() - 0.5) * 2;
+        const dy = (Math.random() - 0.5) * 2;
 
-        circle.x = newX;
-        circle.y = newY;
-        circle.radius = newRadius;
-      });
+        circles.push({ x, y, radius, color, dx, dy });
+      }
 
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      circles.forEach((circle) => {
-        const { x, y, radius, color } = circle;
-        drawCircle(ctx, x, y, radius, color);
-      });
+      circlesRef.current = circles;
+
+      draw();
     }
-  };
-
-  window.addEventListener("resize", resizeHandler);
-
-  return () => {
-    window.removeEventListener("resize", resizeHandler);
-  };
-}, []);
-
+  }, []);
 
   return (
     <canvas
