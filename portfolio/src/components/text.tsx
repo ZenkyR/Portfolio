@@ -18,7 +18,7 @@ const TextAnimation = () => {
   return (
     <animated.div style={styles}>
       <h1 style={headingStyle}>
-        Developpeur full-stack en recherche d'une alternance
+        Developpeur full-stack en recherche d&apos;une alternance
       </h1>
       <p style={paragraphStyle}>
         Actuellement en formation à Epitech, où je me consacre à
