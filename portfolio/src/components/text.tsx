@@ -22,14 +22,14 @@ const TextAnimation = () => {
       </h1>
       <p style={paragraphStyle}>
         Actuellement en formation à Epitech, où je me consacre à
-        l'acquisition de compétences informatiques. À présent, je me lance dans
-        une quête passionnante : trouver une opportunité d'alternance pour la
-        rentrée de septembre, pour une durée d'un an. Doté d'une véritable
-        passion pour la programmation, je suis animé par un esprit d'équipe et
-        une soif d'apprendre. Mon objectif est de me plonger dans un
-        environnement professionnel stimulant, où je pourrai mettre en pratique
-        mes connaissances et continuer à développer mes talents au sein d'une
-        équipe dynamique et innovante.
+        l&apos;acquisition de compétences informatiques. À présent, je me lance
+        dans une quête passionnante : trouver une opportunité d&apos;alternance
+        pour la rentrée de septembre, pour une durée d&apos;un an. Doté
+        d&apos;une véritable passion pour la programmation, je suis animé par un
+        esprit d&apos;équipe et une soif d&apos;apprendre. Mon objectif est de
+        me plonger dans un environnement professionnel stimulant, où je pourrai
+        mettre en pratique mes connaissances et continuer à développer mes
+        talents au sein d&apos;une équipe dynamique et innovante.
       </p>
     </animated.div>
   );
