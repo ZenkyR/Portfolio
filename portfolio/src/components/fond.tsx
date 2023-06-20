@@ -30,6 +30,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
   const drawCircle = (ctx: CanvasRenderingContext2D, x: number, y: number, radius: number, color: string) => {
     ctx.beginPath();
     ctx.fillStyle = color;
+    ctx.filter = "blur(0px)";
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fill();
   };
@@ -74,7 +75,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
         mouseY >= y - radius &&
         mouseY <= y + radius
       ) {
-        circlesRef.current.splice(index, 1);
+        circlesRef.current.splice(index, 1);        
       }
     });
   };
@@ -107,8 +108,11 @@ const Canvas: React.FC<CanvasProps> = (props) => {
       canvas.height = canvasHeight;
 
       const circles: Circle[] = [];
+
       const numberOfCircles = canvasWidth < 500 ? 50 : 100;
       const maxRadius = canvasWidth < 500 ? 20 : 70;
+      const boomBubble = maxRadius - 30;
+     console.log(maxRadius);
       for (let i = 0; i < numberOfCircles; i++) {
         const x = Math.floor(Math.random() * canvasWidth);
         const y = Math.floor(Math.random() * canvasHeight);
