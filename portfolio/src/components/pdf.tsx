@@ -3,7 +3,14 @@
 export const Pdf = () => {
   return (
     <>
-      <embed src="/Kezon-Lacheteau-CV.pdf" width="750" height="700"  type="application/pdf"></embed>
+      <div className="border rounded-xl shadow-lg">
+        <embed
+          className="w-full rounded-xl"
+          src="/Kezon-Lacheteau-CV.pdf"
+          height="700"
+          type="application/pdf"
+        ></embed>
+      </div>
     </>
   );
 };

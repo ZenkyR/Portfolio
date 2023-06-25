@@ -16,11 +16,11 @@ const TextAnimation = () => {
   });
 
   return (
-    <animated.div style={styles}>
-      <h1 style={headingStyle}>
+    <animated.div style={styles} className="text-center">
+     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
         Developpeur full-stack en recherche d&apos;une alternance
       </h1>
-      <p style={paragraphStyle}>
+      <p className="text-lg md:text-xl lg:text-2xl text-gray-3  text-justify">
         Actuellement en formation à Epitech, où je me consacre à
         l&apos;acquisition de compétences informatiques. À présent, je me lance
         dans une quête passionnante : trouver une opportunité d&apos;alternance
@@ -33,16 +33,6 @@ const TextAnimation = () => {
       </p>
     </animated.div>
   );
-};
-
-const headingStyle = {
-  fontSize: "1.8rem",
-  marginBottom: "1rem",
-};
-
-const paragraphStyle = {
-  fontSize: "1rem",
-  maxWidth: "750px",
-};
+};  
 
 export default TextAnimation;

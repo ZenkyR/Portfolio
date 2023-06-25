@@ -1,37 +1,71 @@
 "use client";
-
 import React from "react";
+import { useSpring, animated } from "react-spring";
 
 interface NavBarProps {
   toggle: () => void;
-  pdfVisible: boolean;
-  textVisible: boolean;
+  textVisible: () => void;
+  contactVisible: () => void;
+  infoVisible: () => void;
+  projectVisible: () => void;
 }
 
-export const NavBar = ({ toggle, pdfVisible, textVisible }: NavBarProps) => {
+export const NavBar = ({
+  toggle,
+  textVisible,
+  contactVisible,
+  infoVisible,
+  projectVisible,
+}: NavBarProps) => {
+  const props = useSpring({
+    from: { opacity: 0, transform: "translateX(-50px)" },
+    to: { opacity: 1, transform: "translateX(0)" },
+  });
+
   return (
-    <>
-      <nav>
-        <ul style={btn} className="flex">
-          <li style={a}> <button onClick={toggle}>Accueil</button></li>
-          <li style={a}> <button onClick={toggle}>Info</button></li>
-          <li style={a}> <button onClick={toggle}>CV</button></li>
-          <li style={a}> <button onClick={toggle}>Projet</button></li>
-          <li style={a}> <button onClick={toggle}>Contact</button></li>
-        </ul>
-      </nav>
-    </>
+    <nav className="flex justify-center">
+      <ul className="flex gap-10 items-center space-x-6 m-5">
+        <animated.li style={props}>
+          <button
+            className="text-lg lg:text-xl text-yellow-500 hover:text-yellow-700 transition-colors duration-300 border p-5 animate-bounce"
+            onClick={textVisible}
+          >
+            Accueil
+          </button>
+        </animated.li>
+        <animated.li style={props}>
+          <button
+            className="text-lg lg:text-xl text-green-500 hover:text-green-700 transition-colors duration-300 border p-5 animate-bounce"
+            onClick={infoVisible}
+          >
+            Info
+          </button>
+        </animated.li>
+        <animated.li style={props}>
+          <button
+            className="text-lg lg:text-xl text-blue-500 hover:text-blue-700 transition-colors duration-300 border p-5 animate-bounce"
+            onClick={toggle}
+          >
+            CV
+          </button>
+        </animated.li>
+        <animated.li style={props}>
+          <button
+            className="text-lg lg:text-xl text-pink-500 hover:text-pink-700 transition-colors duration-300 border p-5 animate-bounce"
+            onClick={projectVisible}
+          >
+            Projet
+          </button>
+        </animated.li>
+        <animated.li style={props}>
+          <button
+            className="text-lg lg:text-xl text-purple-500 hover:text-purple-700 transition-colors duration-300 border p-5 animate-bounce"
+            onClick={contactVisible}
+          >
+            Contact
+          </button>
+        </animated.li>
+      </ul>
+    </nav>
   );
-};
-
-const btn = {
-  fontSize: "1.8rem",
-  margin: "1rem",
-  gap: "20px",
-};
-
-const a = {
-  border: "1px dotted black",
-  borderRadius: "10px",
-  padding: "20px",
 };

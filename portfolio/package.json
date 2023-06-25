@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@types/node": "20.3.0",
     "@types/react": "18.2.11",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "emailjs-com": "^3.2.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.5",
     "jquery": "^3.7.0",

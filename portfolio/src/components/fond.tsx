@@ -112,7 +112,6 @@ const Canvas: React.FC<CanvasProps> = (props) => {
       const numberOfCircles = canvasWidth < 500 ? 50 : 100;
       const maxRadius = canvasWidth < 500 ? 20 : 70;
       const boomBubble = maxRadius - 30;
-     console.log(maxRadius);
       for (let i = 0; i < numberOfCircles; i++) {
         const x = Math.floor(Math.random() * canvasWidth);
         const y = Math.floor(Math.random() * canvasHeight);
