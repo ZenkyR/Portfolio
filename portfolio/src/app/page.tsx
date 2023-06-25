@@ -57,6 +57,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center items-center">
+      <Canvas />
       <div style={width} className="absolute text-justify">
         <div className="fixed top-0">
           <NavBar
@@ -73,11 +74,10 @@ export default function Home() {
         <div> {projectVisible && <Projet />} </div>
         <div> {contactVisible && <ContactUs />} </div>
       </div>
-      <Canvas />
     </div>
   );
 }
 
 const width = {
-  width: "750px",
+  width: "40%",
 };

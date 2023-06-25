@@ -108,7 +108,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
       canvas.height = canvasHeight;
 
       const circles: Circle[] = [];
-
+      
       const numberOfCircles = canvasWidth < 500 ? 50 : 100;
       const maxRadius = canvasWidth < 500 ? 20 : 70;
       const boomBubble = maxRadius - 30;
