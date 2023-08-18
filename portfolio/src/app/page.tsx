@@ -56,23 +56,25 @@ export default function Home() {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <Canvas />
-      <div style={width} className="absolute text-justify">
-        <div className="fixed top-0">
-          <NavBar
-            toggle={togglePDF}
-            textVisible={toggleVisible}
-            contactVisible={toggleContactVisible}
-            infoVisible={toggleInfoVisible}
-            projectVisible={toggleProjectVisible}
-          />
+    <div>
+      <div className="flex justify-center items-center">
+        <Canvas />
+        <div style={width} className="absolute text-justify">
+          <div className="fixed top-0">
+            <NavBar
+              toggle={togglePDF}
+              textVisible={toggleVisible}
+              contactVisible={toggleContactVisible}
+              infoVisible={toggleInfoVisible}
+              projectVisible={toggleProjectVisible}
+            />
+          </div>
+          <div> {textVisible && <TextAnimation />} </div>
+          <div> {infoVisible && <Info />} </div>
+          <div> {pdfVisible && <Pdf />} </div>
+          <div> {projectVisible && <Projet />} </div>
+          <div> {contactVisible && <ContactUs />} </div>
         </div>
-        <div> {textVisible && <TextAnimation />} </div>
-        <div> {infoVisible && <Info />} </div>
-        <div> {pdfVisible && <Pdf />} </div>
-        <div> {projectVisible && <Projet />} </div>
-        <div> {contactVisible && <ContactUs />} </div>
       </div>
     </div>
   );
