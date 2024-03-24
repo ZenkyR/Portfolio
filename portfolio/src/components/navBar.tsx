@@ -22,12 +22,20 @@ export const NavBar = ({
     to: { opacity: 1, transform: "translateX(0)" },
   });
 
+  const colorClasses = {
+    yellow: "text-yellow-500 hover:text-yellow-700",
+    green: "text-green-500 hover:text-green-700",
+    blue: "text-blue-500 hover:text-blue-700",
+    pink: "text-pink-500 hover:text-pink-700",
+    purple: "text-purple-500 hover:text-purple-700",
+  };
+
   const buttons = [
-    { name: "Accueil", color: "yellow", action: textVisible },
-    { name: "Info", color: "green", action: infoVisible },
-    { name: "CV", color: "blue", action: toggle },
-    { name: "Projet", color: "pink", action: projectVisible },
-    { name: "Contact", color: "purple", action: contactVisible },
+    { name: "Accueil", color: colorClasses.yellow, action: textVisible },
+    { name: "Info", color: colorClasses.green, action: infoVisible },
+    { name: "CV", color: colorClasses.blue, action: toggle },
+    { name: "Projet", color: colorClasses.pink, action: projectVisible },
+    { name: "Contact", color: colorClasses.purple, action: contactVisible },
   ];
 
   return (
@@ -36,7 +44,7 @@ export const NavBar = ({
         {buttons.map((button, index) => (
           <animated.li key={index} style={props}>
             <button
-              className={`text-lg lg:text-xl text-${button.color}-500 hover:text-${button.color}-700 transition-colors duration-300 border p-5 animate-bounce`}
+              className={`text-lg lg:text-xl ${button.color} transition-colors duration-300 border p-5 animate-bounce`}
               onClick={button.action}
             >
               {button.name}
@@ -46,4 +54,4 @@ export const NavBar = ({
       </ul>
     </nav>
   );
-}
+};
