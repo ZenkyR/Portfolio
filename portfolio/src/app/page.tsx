@@ -41,5 +41,3 @@ export default function Home() {
 const width = {
   width: "80%",
 };
-
-export const MemoizedHome = React.memo(Home);
