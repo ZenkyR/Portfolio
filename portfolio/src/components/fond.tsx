@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 
 interface Circle {
   x: number;
@@ -18,24 +18,24 @@ const Canvas: React.FC<CanvasProps> = (props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const circlesRef = useRef<Circle[]>([]);
 
-  const getRandomColor = () => {
+  const getRandomColor = useCallback(() => {
     const letters = "0123456789ABCDEF";
     let color = "#";
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  };
+  }, []);
 
-  const drawCircle = (ctx: CanvasRenderingContext2D, x: number, y: number, radius: number, color: string) => {
+  const drawCircle = useCallback((ctx: CanvasRenderingContext2D, x: number, y: number, radius: number, color: string) => {
     ctx.beginPath();
     ctx.fillStyle = color;
     ctx.filter = "blur(0px)";
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.fill();
-  };
+  }, []);
 
-  const updateCircle = (circle: Circle) => {
+  const updateCircle = useCallback((circle: Circle) => {
     const { x, y, dx, dy, radius, color } = circle;
     const newX = x + dx;
     const newY = y + dy;
@@ -58,9 +58,9 @@ const Canvas: React.FC<CanvasProps> = (props) => {
     if (ctx) {
       drawCircle(ctx, newX, newY, radius, color);
     }
-  };
+  }, [drawCircle]);
 
-  const handleCircleClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+  const handleCircleClick = useCallback((event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     const rect = canvas?.getBoundingClientRect();
     const mouseX = event.clientX - (rect?.left || 0);
@@ -78,9 +78,9 @@ const Canvas: React.FC<CanvasProps> = (props) => {
         circlesRef.current.splice(index, 1);        
       }
     });
-  };
+  }, []);
 
-  const draw = () => {
+  const draw = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     const canvasWidth = canvas?.width || 0;
@@ -95,7 +95,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
 
       requestAnimationFrame(draw);
     }
-  };
+  }, [updateCircle]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -127,7 +127,7 @@ const Canvas: React.FC<CanvasProps> = (props) => {
 
       draw();
     }
-  }, []);
+  }, [draw, getRandomColor]);
 
   return (
     <canvas

@@ -22,50 +22,28 @@ export const NavBar = ({
     to: { opacity: 1, transform: "translateX(0)" },
   });
 
+  const buttons = [
+    { name: "Accueil", color: "yellow", action: textVisible },
+    { name: "Info", color: "green", action: infoVisible },
+    { name: "CV", color: "blue", action: toggle },
+    { name: "Projet", color: "pink", action: projectVisible },
+    { name: "Contact", color: "purple", action: contactVisible },
+  ];
+
   return (
-    <nav className="flex justify-center">
-      <ul className="flex gap-10 items-center space-x-6 m-5">
-        <animated.li style={props}>
-          <button
-            className="text-lg lg:text-xl text-yellow-500 hover:text-yellow-700 transition-colors duration-300 border p-5 animate-bounce"
-            onClick={textVisible}
-          >
-            Accueil
-          </button>
-        </animated.li>
-        <animated.li style={props}>
-          <button
-            className="text-lg lg:text-xl text-green-500 hover:text-green-700 transition-colors duration-300 border p-5 animate-bounce"
-            onClick={infoVisible}
-          >
-            Info
-          </button>
-        </animated.li>
-        <animated.li style={props}>
-          <button
-            className="text-lg lg:text-xl text-blue-500 hover:text-blue-700 transition-colors duration-300 border p-5 animate-bounce"
-            onClick={toggle}
-          >
-            CV
-          </button>
-        </animated.li>
-        <animated.li style={props}>
-          <button
-            className="text-lg lg:text-xl text-pink-500 hover:text-pink-700 transition-colors duration-300 border p-5 animate-bounce"
-            onClick={projectVisible}
-          >
-            Projet
-          </button>
-        </animated.li>
-        <animated.li style={props}>
-          <button
-            className="text-lg lg:text-xl text-purple-500 hover:text-purple-700 transition-colors duration-300 border p-5 animate-bounce"
-            onClick={contactVisible}
-          >
-            Contact
-          </button>
-        </animated.li>
+    <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 inline-flex">
+      <ul className="flex  flex-wrap justify-center gap-5 items-center mt-5">
+        {buttons.map((button, index) => (
+          <animated.li key={index} style={props}>
+            <button
+              className={`text-lg lg:text-xl text-${button.color}-500 hover:text-${button.color}-700 transition-colors duration-300 border p-5 animate-bounce`}
+              onClick={button.action}
+            >
+              {button.name}
+            </button>
+          </animated.li>
+        ))}
       </ul>
     </nav>
   );
-};
+}

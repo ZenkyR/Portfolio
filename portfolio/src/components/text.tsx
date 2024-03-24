@@ -1,38 +1,36 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import { useSpring, animated } from "react-spring";
 
+const springConfig = {
+  from: { opacity: 0, transform: "scale(0)" },
+  to: [
+    { opacity: 1, transform: "scale(1)" },
+    { opacity: 0, transform: "scale(2)" },
+    { opacity: 1, transform: "scale(1)" },
+  ],
+  config: { duration: 1000 },
+  delay: 500,
+  reset: true,
+};
 const TextAnimation = () => {
-  const styles = useSpring({
-    from: { opacity: 0, transform: "scale(0)" },
-    to: [
-      { opacity: 1, transform: "scale(1)" },
-      { opacity: 0, transform: "scale(2)" },
-      { opacity: 1, transform: "scale(1)" },
-    ],
-    config: { duration: 1000 },
-    delay: 500,
-    reset: true,
-  });
+  const styles = useSpring(springConfig);
 
   return (
-    <animated.div style={styles} className="text-center">
-     <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-        Developpeur full-stack en recherche d&apos;une alternance
+    <animated.div style={styles}>
+      <h1 className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-bold mb-6">
+        Developpeur full-stack Étudiant chez Epitech Lyon et alternant chez
+        Avicom
       </h1>
-      <p className="text-lg md:text-xl lg:text-2xl text-gray-3  text-justify">
-        Actuellement en formation à Epitech, où je me consacre à
-        l&apos;acquisition de compétences informatiques. À présent, je me lance
-        dans une quête passionnante : trouver une opportunité d&apos;alternance
-        pour la rentrée de septembre, pour une durée d&apos;un an. Doté
-        d&apos;une véritable passion pour la programmation, je suis animé par un
-        esprit d&apos;équipe et une soif d&apos;apprendre. Mon objectif est de
-        me plonger dans un environnement professionnel stimulant, où je pourrai
-        mettre en pratique mes connaissances et continuer à développer mes
-        talents au sein d&apos;une équipe dynamique et innovante.
+      <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-gray-3 text-justify">
+        Actuellement en formation à Epitech, où je me concentre sur le
+        développement web et mobile, je suis également alternant chez Avicom,
+        une agence de communication digitale. Je suis passionné par le
+        développement web et mobile, et je suis toujours à la recherche de
+        nouveaux projets à réaliser pour améliorer mes compétences.
       </p>
     </animated.div>
   );
-};  
+};
 
-export default TextAnimation;
+export default memo(TextAnimation);
