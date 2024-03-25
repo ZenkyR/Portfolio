@@ -26,3 +26,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+canvas:focus {
+  outline: none;
+}
+
+canvas:active {
+  outline: none;
+}

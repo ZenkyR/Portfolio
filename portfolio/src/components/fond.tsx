@@ -133,10 +133,11 @@ const Canvas: React.FC<CanvasProps> = (props) => {
     <canvas
       ref={canvasRef}
       onClick={handleCircleClick}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer", outline: "none" }}
       {...props}
     />
-  );
+  );  
 };
+
 
 export default Canvas;

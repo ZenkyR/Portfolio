@@ -5,9 +5,17 @@ const SERVICE_ID = "service_kysp5ts";
 const TEMPLATE_ID = "template_ewvx4fj";
 const USER_ID = "B1HRJaOGE4POlrCOF";
 
-const FormField = ({ label, type, name, placeholder, value, onChange, error }: any) => (
+const FormField = ({
+  label,
+  type,
+  name,
+  placeholder,
+  value,
+  onChange,
+  error,
+}: any) => (
   <div className="mb-4">
-    <label className="block text-white text-sm font-bold mb-2">{label}</label>
+    <label className="block text-white text-sm font-bold mt-2">{label}</label>
     {type === "textarea" ? (
       <textarea
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -15,7 +23,7 @@ const FormField = ({ label, type, name, placeholder, value, onChange, error }: a
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        style={{ height: '150px' }} 
+        style={{ height: "150px" }}
       />
     ) : (
       <input
@@ -40,7 +48,6 @@ export const ContactUs = () => {
   const [toNameError, setToNameError] = useState("");
   const [fromNameError, setFromNameError] = useState("");
   const [messageError, setMessageError] = useState("");
-
 
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,25 +81,36 @@ export const ContactUs = () => {
     <form
       className="shadow-md rounded px-8 pt-6 pb-8 mb-4"
       onSubmit={sendEmail}
-      style={{ maxWidth: '600px', margin: '0 auto' }} // Reduce the overall size of the container
-
+      style={{ maxWidth: "600px", margin: "0 auto" }}
     >
+      <h2 className="text-2xl md:text-3xl lg:text-4xl sm:text-xl font-bold text-white mb-4">
+        Contact
+      </h2>
+      <h3 className="text-lg md:text-xl lg:text-2xl sm:text-sm text-white mb-6">
+        Envoyez-moi un message si vous avez des questions ou des propositions de
+        projet
+      </h3>
       <FormField
-        label="Name"
+        label="Nom"
         type="text"
         name="to_name"
         placeholder="Entrez votre nom"
         value={toName}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setToName(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setToName(e.target.value)
+        }
         error={toNameError}
       />
+
       <FormField
         label="Email"
         type="email"
         name="from_name"
         placeholder="Entrez votre email"
         value={fromName}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFromName(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setFromName(e.target.value)
+        }
         error={fromNameError}
       />
       <FormField
@@ -101,17 +119,17 @@ export const ContactUs = () => {
         name="message"
         placeholder="Entrez votre message"
         value={message}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMessage(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setMessage(e.target.value)
+        }
         error={messageError}
       />
       <input
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"
+        className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow focus:outline-none focus:shadow-outline cursor-pointer transition duration-200 ease-in-out"
         type="submit"
         value="Envoyer"
       />
-        {errorMessage && (
-      <p className="text-red-500 mt-3">{errorMessage}</p>
-    )}
+      {errorMessage && <p className="text-red-500 mt-3">{errorMessage}</p>}
       {isSent === true && (
         <p className="text-green-500 mt-3">Message envoyé avec succès</p>
       )}

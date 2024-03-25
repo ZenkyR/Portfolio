@@ -40,11 +40,11 @@ export const NavBar = ({
 
   return (
     <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 inline-flex">
-      <ul className="flex  flex-wrap justify-center gap-5 items-center mt-5">
+      <ul className="flex flex-wrap justify-center gap-2 sm:gap-5 items-center mt-2 sm:mt-5">
         {buttons.map((button, index) => (
           <animated.li key={index} style={props}>
             <button
-              className={`text-lg lg:text-xl ${button.color} transition-colors duration-300 border p-5 animate-bounce`}
+              className={`text-sm sm:text-lg lg:text-xl ${button.color} transition-colors duration-300 border p-2 sm:p-5 animate-bounce`}
               onClick={button.action}
             >
               {button.name}
