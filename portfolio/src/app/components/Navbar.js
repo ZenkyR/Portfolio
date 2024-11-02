@@ -1,16 +1,21 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleDownloadCV = () => {
+    const cvPath = '/Kezon-Lacheteau-CV.pdf';
+    window.open(cvPath, '_blank');
   };
 
   const menuItems = [
@@ -37,8 +42,8 @@ const Navbar = () => {
               Portfolio
             </a>
           </motion.div>
-
-          <div className="hidden md:flex gap-8">
+          
+          <div className="hidden md:flex items-center gap-8 px-5">
             {menuItems.map((item) => (
               <a
                 key={item.href}
@@ -48,11 +53,20 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleDownloadCV}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+            >
+              <Download size={18} />
+              <span>CV</span>
+            </motion.button>
           </div>
 
           <button
             onClick={toggleMenu}
-            className="md:hidden text-white hover:text-blue-400 transition-colors"
+            className="md:hidden text-white hover:text-blue-400 transition-colors px-5"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -84,6 +98,17 @@ const Navbar = () => {
                       {item.label}
                     </motion.a>
                   ))}
+                  <motion.button
+                    onClick={handleDownloadCV}
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 20, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Download size={18} />
+                    <span>Télécharger CV</span>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
