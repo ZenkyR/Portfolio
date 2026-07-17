@@ -18,7 +18,7 @@ const Navbar = () => {
       transition={{ duration: 0.7, delay: 0.3 }}
       className="fixed top-4 inset-x-0 z-50 px-4"
     >
-      <nav className="glass mx-auto flex max-w-2xl items-center justify-between gap-6 rounded-full px-6 py-3 text-sm">
+      <nav className="glass-solid mx-auto flex max-w-2xl items-center justify-between gap-4 rounded-full px-5 py-3 text-sm sm:gap-6 sm:px-6">
         <a
           href="#home"
           aria-label="Retour en haut"

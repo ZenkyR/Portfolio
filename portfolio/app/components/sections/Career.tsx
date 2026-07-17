@@ -21,11 +21,11 @@ const Career = () => (
             href={step.url}
             target={step.internal ? undefined : "_blank"}
             rel={step.internal ? undefined : "noopener noreferrer"}
-            className="glass glass-hover group grid grid-cols-1 md:grid-cols-[11rem_1fr_auto] md:items-center gap-2 md:gap-8 rounded-2xl p-6 md:px-8"
+            className="glass glass-hover group grid grid-cols-1 md:grid-cols-[11rem_1fr_auto] md:items-center gap-1.5 md:gap-8 rounded-2xl p-5 sm:p-6 md:px-8"
           >
-            <span className="font-mono text-xs text-accent">{step.period}</span>
-            <span className="text-lg tracking-tight">{step.role}</span>
-            <span className="flex items-center gap-1.5 text-muted transition-colors group-hover:text-accent">
+            <span className="font-mono text-[0.7rem] text-accent sm:text-xs">{step.period}</span>
+            <span className="text-base tracking-tight sm:text-lg">{step.role}</span>
+            <span className="flex items-center gap-1.5 text-sm text-muted transition-colors group-hover:text-accent sm:text-base">
               {step.org}
               {step.internal ? (
                 <span className="transition-transform duration-300 group-hover:translate-y-0.5">

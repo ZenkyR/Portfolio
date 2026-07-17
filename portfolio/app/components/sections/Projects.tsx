@@ -44,11 +44,11 @@ const Projects = () => (
         <motion.article
           key={project.name}
           {...revealDelayed(index, 0.08)}
-          className="glass glass-hover flex flex-col rounded-2xl p-6 md:p-8"
+          className="glass glass-hover flex flex-col rounded-2xl p-5 sm:p-6 md:p-8"
         >
           <div
             aria-hidden="true"
-            className="mb-6 flex h-28 items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-black/20"
+            className="mb-5 flex h-24 items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-black/20 sm:mb-6 sm:h-28"
           >
             <Thumb />
           </div>
@@ -80,7 +80,7 @@ const Projects = () => (
       })}
     </div>
 
-    <motion.p {...revealDelayed(4, 0.08)} className="mt-8 text-sm text-muted/70">
+    <motion.p {...revealDelayed(4, 0.08)} className="mt-8 text-xs text-muted/70 sm:text-sm">
       Pas de liens : tout est en dépôt privé. J&apos;en ouvrirai peut-être un jour, si
       j&apos;y pense. Certains oui, d&apos;autres non. À voir.
     </motion.p>

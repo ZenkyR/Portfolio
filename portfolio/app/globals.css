@@ -12,8 +12,8 @@
   --color-accent-deep: #6d28d9;
   --color-fuchsia: #e879f9;
 
-  --text-display: clamp(3rem, 11vw, 8rem);
-  --text-lead: clamp(1.125rem, 2.2vw, 1.5rem);
+  --text-display: clamp(3.5rem, 17vw, 8rem);
+  --text-lead: clamp(1rem, 2.4vw, 1.5rem);
 
   --animate-drift: drift 22s ease-in-out infinite;
   --animate-drift-slow: drift 30s ease-in-out infinite reverse;
@@ -166,6 +166,14 @@ body {
   );
   border: 1px solid rgb(255 255 255 / 0.08);
   backdrop-filter: blur(12px);
+}
+
+.glass-solid {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.07) 0%, rgb(255 255 255 / 0.02) 100%),
+    color-mix(in srgb, var(--color-ink) 82%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(20px);
 }
 
 .glass-hover {

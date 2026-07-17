@@ -20,7 +20,7 @@ const SectionHeading = ({ id, index, title, intro }: SectionHeadingProps) => (
     </motion.div>
 
     {intro && (
-      <motion.p {...reveal} className="text-muted mb-10 max-w-xl">
+      <motion.p {...reveal} className="text-sm text-muted mb-8 max-w-xl sm:text-base sm:mb-10">
         {intro}
       </motion.p>
     )}

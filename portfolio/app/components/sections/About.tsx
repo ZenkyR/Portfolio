@@ -9,7 +9,7 @@ const About = () => (
   <section id="about" aria-labelledby="about-title" className="scroll-mt-24 max-w-5xl mx-auto px-6 pt-24 pb-16 md:pt-40 md:pb-20">
     <SectionHeading id="about" index="01" title="À propos" />
 
-    <motion.div {...reveal} className="glass rounded-3xl p-8 md:p-12 space-y-5">
+    <motion.div {...reveal} className="glass rounded-3xl p-6 sm:p-8 md:p-12 space-y-5">
       <p className="text-[length:var(--text-lead)] leading-relaxed text-balance">
         Le jour, je dirige <span className="font-medium text-accent">{person.company}</span> :
         des sites sur mesure pour les artisans, les indépendants et les petites entreprises,

@@ -17,14 +17,14 @@ const Stack = () => (
     <div className="space-y-8">
       {stack.map((group, index) => (
         <motion.div key={group.label} {...revealDelayed(index)}>
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.15em] text-muted mb-4">
+          <p className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-muted mb-3 sm:text-[0.7rem] sm:mb-4">
             {group.label}
           </p>
-          <ul className="flex flex-wrap gap-3">
+          <ul className="flex flex-wrap items-center gap-1.5 sm:gap-2.5">
             {group.items.map((tech) => (
               <li
                 key={tech}
-                className="rounded-full border border-accent/25 bg-accent-strong/10 px-5 py-2.5 text-sm text-accent transition-colors duration-300 hover:border-accent/60 hover:bg-accent-strong/20"
+                className="rounded-full border border-accent/25 bg-accent-strong/10 px-3 py-1.5 text-xs leading-none text-accent transition-colors duration-300 hover:border-accent/60 hover:bg-accent-strong/20 sm:px-4 sm:py-2 sm:text-sm sm:leading-normal"
               >
                 {tech}
               </li>
