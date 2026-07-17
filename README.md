@@ -27,10 +27,6 @@ npm run build
 npm run lint
 ```
 
-Il faut un vrai runtime Node. Le site a longtemps été exporté en statique, jusqu'à ce
-que je réalise que ça tue `next/image` en silence : le build reste vert, la page
-charge, l'image fait un 404 et personne ne prévient.
-
 ## Structure
 
 ```
