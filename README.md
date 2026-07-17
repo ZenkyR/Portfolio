@@ -1,31 +1,72 @@
-# Portfolio — Kezon Lacheteau
+# kezon-lacheteau.fr
 
-Page personnelle statique, hébergée sur https://www.kezon-lacheteau.fr.
+Ma page perso. Une page, six sections, mon nom en très gros.
 
-Elle ne présente ni projets ni prestations : l'activité commerciale est sur
-[goth-tech.fr](https://www.goth-tech.fr).
+Le jour je fais des sites pour de vrais gens, et ça se passe sur
+[goth-tech.fr](https://www.goth-tech.fr), qui est le site sérieux. Ici je parle de ce
+que je fabrique le soir : des moteurs, des overlays, des mondes qui tiennent mal
+debout. Tout n'aboutit pas. C'est un peu le sujet.
+
+Ce qu'il n'y a pas : de CV à télécharger, de barres de compétences à 85 %, de
+formulaire de contact qui se transforme en relais de spam.
 
 ## Stack
 
-Next.js 16 (App Router, export statique), React 19, TypeScript, Tailwind CSS 4, motion.
+Next.js 16 (App Router), React 19, TypeScript, Tailwind 4, motion.
 
-Le site n'a aucun backend : `npm run build` produit du HTML statique dans `out/`.
+Quatre dépendances de production. Il y en avait sept, dont une bibliothèque d'icônes
+complète pour afficher une flèche.
 
-## Développement
+## Lancer le truc
 
 ```bash
 cd portfolio
 npm install
 npm run dev     # http://localhost:3000
-npm run build   # export statique dans out/
+npm run build
 npm run lint
 ```
 
-## Contraintes de versions
+Il faut un vrai runtime Node. Le site a longtemps été exporté en statique, jusqu'à ce
+que je réalise que ça tue `next/image` en silence : le build reste vert, la page
+charge, l'image fait un 404 et personne ne prévient.
 
-Deux dépendances sont volontairement en retrait de la dernière version publiée :
+## Structure
 
-- **TypeScript 6** — la 7.x est le compilateur natif et n'expose plus l'API JavaScript
-  `require("typescript")` dont Next 16 a besoin pour son vérificateur de types.
-- **ESLint 9** — `eslint-config-next` embarque `eslint-plugin-react`, qui ne supporte pas
-  l'API de règles d'ESLint 10.
+```
+app/
+├── components/
+│   ├── layout/    ce qui entoure la page
+│   ├── sections/  ce qu'on lit
+│   └── ui/        le logo et une flèche
+├── config/        tout ce qui change si je change de nom
+├── data/          les projets, le parcours, la stack
+└── lib/           les animations
+```
+
+Une seule règle : rien en dur. Le nom, les URLs, les liens vivent dans
+`config/site.ts`. Changer de domaine, c'est une ligne.
+
+## Pourquoi TypeScript 6 et ESLint 9
+
+Parce que j'ai essayé les dernières versions, et non.
+
+**TypeScript 7** est le compilateur natif : il n'expose plus l'API JavaScript que le
+vérificateur de types de Next charge au build. Next en conclut que TypeScript n'est
+pas installé, tente de le réinstaller en boucle, et meurt.
+
+**ESLint 10** casse `eslint-plugin-react`, qu'`eslint-config-next` embarque et qui
+plafonne à `^9.7`. Next annonce fièrement supporter `eslint >=9.0.0`. Sa propre
+dépendance n'est pas d'accord.
+
+Les deux sauteront quand l'écosystème suivra. Inutile de les monter « juste pour
+voir », c'est déjà fait.
+
+## L'override postcss
+
+Next embarque sa propre copie de postcss en 8.4.31, avec une XSS corrigée en 8.5.10.
+`npm audit fix --force` propose de régler ça en installant **Next 9.3.3** : sept
+versions majeures en arrière pour éviter une faille qui ne me concerne pas. Un
+override déduplique sur 8.5.19 à la place.
+
+À supprimer le jour où Next embarquera une version à jour.
