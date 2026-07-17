@@ -27,15 +27,14 @@ export const metadata: Metadata = {
   applicationName: person.name,
   keywords: [
     person.name,
+    "Kezon",
+    "Lacheteau",
+    "ZenkyR",
     person.companyShort,
     "Global Online Tech Hub",
-    "création site web",
-    "site web sur mesure",
-    "maintenance site web",
-    "informatique",
-    "développeur web",
-    "Ain",
-    "Lyon",
+    "développeur",
+    "Godot",
+    "Next.js",
   ],
   authors: [{ name: person.name, url: person.companyUrl }],
   creator: person.name,
@@ -85,9 +84,9 @@ const jsonLd = {
     "@type": "Organization",
     name: person.company,
     url: person.companyUrl,
+    sameAs: person.companyUrl,
   },
   knowsAbout,
-  areaServed: person.area,
 };
 
 export default function RootLayout({
