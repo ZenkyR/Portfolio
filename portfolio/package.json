@@ -29,7 +29,7 @@
     "postcss": "^8.5.10"
   },
   "allowScripts": {
-    "sharp": false,
+    "sharp": true,
     "unrs-resolver": false
   }
 }
