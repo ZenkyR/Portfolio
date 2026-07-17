@@ -19,6 +19,11 @@
   --animate-drift-slow: drift 30s ease-in-out infinite reverse;
   --animate-shimmer: shimmer 6s linear infinite;
   --animate-rise: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-spectrum: spectrum 1.8s ease-in-out infinite;
+  --animate-portal-exit: portal-exit 4.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  --animate-portal-enter: portal-enter 4.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  --animate-ping-row: ping-row 4s ease-in-out infinite;
+  --animate-wander: wander 9s ease-in-out infinite;
 }
 
 @keyframes drift {

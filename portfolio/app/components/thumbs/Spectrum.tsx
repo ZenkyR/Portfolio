@@ -19,11 +19,8 @@ const Spectrum = () => (
         style={{ transform: `rotate(${angle}deg)` }}
       >
         <span
-          className="w-[2px] rounded-full bg-linear-to-t from-accent-strong to-fuchsia origin-bottom"
-          style={{
-            height: `${height}px`,
-            animation: `spectrum 1.8s ease-in-out ${delay}s infinite`,
-          }}
+          className="w-[2px] rounded-full bg-linear-to-t from-accent-strong to-fuchsia origin-bottom animate-spectrum"
+          style={{ height: `${height}px`, animationDelay: `${delay}s` }}
         />
       </div>
     ))}

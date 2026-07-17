@@ -11,8 +11,7 @@ const Overlay = () => (
     </div>
 
     <span
-      className="absolute bottom-3 left-3 flex size-7 items-center justify-center"
-      style={{ animation: "wander 9s ease-in-out infinite" }}
+      className="absolute bottom-3 left-3 flex size-7 items-center justify-center animate-wander"
     >
       <span className="absolute -top-0.5 -left-0.5 size-2 rotate-45 rounded-[1px] bg-linear-to-br from-accent to-fuchsia" />
       <span className="absolute -top-0.5 -right-0.5 size-2 rotate-45 rounded-[1px] bg-linear-to-br from-accent to-fuchsia" />

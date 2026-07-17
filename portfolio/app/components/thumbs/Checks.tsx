@@ -15,8 +15,8 @@ const Checks = () => (
     {rows.map(({ width, state, delay }) => (
       <div
         key={width + state}
-        className="flex items-center gap-2.5"
-        style={{ animation: `ping-row 4s ease-in-out ${delay}s infinite` }}
+        className="flex items-center gap-2.5 animate-ping-row"
+        style={{ animationDelay: `${delay}s` }}
       >
         <span
           className={`size-1.5 shrink-0 rounded-full ${dotColor[state as keyof typeof dotColor]}`}

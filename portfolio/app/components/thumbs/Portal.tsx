@@ -5,12 +5,10 @@ const Portal = () => (
 
     <div className="absolute inset-0 overflow-hidden rounded-lg">
       <span
-        className="absolute left-1/2 top-1/2 size-2.5 -ml-[5px] -mt-[5px] rounded-[2px] bg-linear-to-br from-accent to-fuchsia"
-        style={{ animation: "portal-exit 4.5s cubic-bezier(0.5, 0, 0.5, 1) infinite" }}
+        className="absolute left-1/2 top-1/2 size-2.5 -ml-[5px] -mt-[5px] rounded-[2px] bg-linear-to-br from-accent to-fuchsia animate-portal-exit"
       />
       <span
-        className="absolute left-1/2 top-1/2 size-2.5 -ml-[5px] -mt-[5px] rounded-[2px] bg-linear-to-br from-fuchsia to-accent"
-        style={{ animation: "portal-enter 4.5s cubic-bezier(0.5, 0, 0.5, 1) infinite" }}
+        className="absolute left-1/2 top-1/2 size-2.5 -ml-[5px] -mt-[5px] rounded-[2px] bg-linear-to-br from-fuchsia to-accent animate-portal-enter"
       />
     </div>
   </div>
