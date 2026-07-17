@@ -79,6 +79,11 @@ const Projects = () => (
         );
       })}
     </div>
+
+    <motion.p {...revealDelayed(4, 0.08)} className="mt-8 text-sm text-muted/70">
+      Pas de liens : tout est en dépôt privé. J&apos;en ouvrirai peut-être un jour, si
+      j&apos;y pense. Certains oui, d&apos;autres non. À voir.
+    </motion.p>
   </section>
 );
 
