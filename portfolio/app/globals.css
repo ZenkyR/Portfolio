@@ -31,6 +31,81 @@
   }
 }
 
+@keyframes spectrum {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes portal-exit {
+  0% {
+    transform: translateY(-2.4rem);
+    opacity: 0;
+  }
+  12%,
+  40% {
+    opacity: 1;
+  }
+  48% {
+    transform: translateY(2.4rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(2.4rem);
+    opacity: 0;
+  }
+}
+
+@keyframes portal-enter {
+  0%,
+  48% {
+    transform: translateX(-2.4rem) rotate(90deg);
+    opacity: 0;
+  }
+  60%,
+  88% {
+    opacity: 1;
+  }
+  96%,
+  100% {
+    transform: translateX(2.4rem) rotate(90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-row {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  20%,
+  60% {
+    opacity: 1;
+  }
+}
+
+@keyframes wander {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(3.2rem) translateY(-0.35rem);
+  }
+  50% {
+    transform: translateX(5.6rem) translateY(0.3rem);
+  }
+  75% {
+    transform: translateX(1.8rem) translateY(0.5rem);
+  }
+}
+
 @keyframes shimmer {
   to {
     background-position: 200% center;

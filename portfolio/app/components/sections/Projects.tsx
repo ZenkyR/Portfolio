@@ -3,12 +3,28 @@
 import { motion } from "motion/react";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import { revealDelayed } from "@/app/lib/motion";
-import { projects, statusLabel, type ProjectStatus } from "@/app/data/projects";
+import Portal from "@/app/components/thumbs/Portal";
+import Spectrum from "@/app/components/thumbs/Spectrum";
+import Checks from "@/app/components/thumbs/Checks";
+import Overlay from "@/app/components/thumbs/Overlay";
+import {
+  projects,
+  statusLabel,
+  type ProjectStatus,
+  type ProjectThumb,
+} from "@/app/data/projects";
 
 const statusStyles: Record<ProjectStatus, string> = {
   encours: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
   prototype: "border-accent/30 bg-accent-strong/10 text-accent",
   abandonne: "border-white/10 bg-white/5 text-muted",
+};
+
+const thumbs: Record<ProjectThumb, () => React.JSX.Element> = {
+  portal: Portal,
+  spectrum: Spectrum,
+  checks: Checks,
+  overlay: Overlay,
 };
 
 const Projects = () => (
@@ -21,12 +37,22 @@ const Projects = () => (
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {projects.map((project, index) => (
+      {projects.map((project, index) => {
+        const Thumb = thumbs[project.thumb];
+
+        return (
         <motion.article
           key={project.name}
           {...revealDelayed(index, 0.08)}
           className="glass glass-hover flex flex-col rounded-2xl p-6 md:p-8"
         >
+          <div
+            aria-hidden="true"
+            className="mb-6 flex h-28 items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-black/20"
+          >
+            <Thumb />
+          </div>
+
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <h3 className="text-xl font-semibold tracking-tight">{project.name}</h3>
             <span
@@ -50,7 +76,8 @@ const Projects = () => (
             ))}
           </ul>
         </motion.article>
-      ))}
+        );
+      })}
     </div>
   </section>
 );

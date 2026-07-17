@@ -1,7 +1,10 @@
 export type ProjectStatus = "encours" | "prototype" | "abandonne";
 
+export type ProjectThumb = "portal" | "spectrum" | "checks" | "overlay";
+
 export type Project = {
   name: string;
+  thumb: ProjectThumb;
   status: ProjectStatus;
   endedIn?: string;
   summary: string;
@@ -21,6 +24,7 @@ export const statusLabel = ({ status, endedIn }: Project) =>
 export const projects: Project[] = [
   {
     name: "Non-euclidien",
+    thumb: "portal",
     status: "encours",
     summary: "Un FPS roguelite où l'espace ne se comporte pas comme il devrait.",
     detail:
@@ -29,6 +33,7 @@ export const projects: Project[] = [
   },
   {
     name: "ARIA Protocol",
+    thumb: "spectrum",
     status: "prototype",
     summary: "Un bullet hell où le boss, c'est votre musique.",
     detail:
@@ -37,6 +42,7 @@ export const projects: Project[] = [
   },
   {
     name: "WebWatcher",
+    thumb: "checks",
     status: "abandonne",
     endedIn: "2025",
     summary: "De la surveillance de sites, jusqu'à la facturation.",
@@ -46,6 +52,7 @@ export const projects: Project[] = [
   },
   {
     name: "Fox Girl Compagnon",
+    thumb: "overlay",
     status: "prototype",
     summary: "Une compagne Live2D qui vit par-dessus les autres applications.",
     detail:
