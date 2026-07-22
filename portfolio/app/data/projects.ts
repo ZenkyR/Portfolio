@@ -1,6 +1,11 @@
-export type ProjectStatus = "encours" | "prototype" | "abandonne";
+export type ProjectStatus = "encours" | "jouable" | "prototype" | "abandonne";
 
 export type ProjectThumb = "portal" | "spectrum" | "checks" | "overlay";
+
+export type ProjectLink = {
+  label: string;
+  url: string;
+};
 
 export type Project = {
   name: string;
@@ -10,10 +15,12 @@ export type Project = {
   summary: string;
   detail: string;
   stack: string[];
+  links?: ProjectLink[];
 };
 
 const statusLabels: Record<ProjectStatus, string> = {
   encours: "En cours",
+  jouable: "Jouable",
   prototype: "Prototype",
   abandonne: "Abandonné",
 };
@@ -34,11 +41,15 @@ export const projects: Project[] = [
   {
     name: "ARIA Protocol",
     thumb: "spectrum",
-    status: "prototype",
+    status: "jouable",
     summary: "Un bullet hell où le boss, c'est votre musique.",
     detail:
-      "On charge n'importe quel morceau : ARIA l'analyse et en tire ses attaques, tout en observant les habitudes du joueur pour s'y adapter. Le spectre affiché n'est pas un décor, c'est l'adversaire lui-même. Chaque musique donne un combat différent.",
-    stack: ["Godot 4.5", "GDScript", "Analyse audio"],
+      "On charge n'importe quel morceau : ARIA l'analyse en direct sur sept bandes de fréquences et en tire ses attaques, tout en observant les habitudes du joueur pour s'y adapter. Le spectre affiché n'est pas un décor, c'est l'adversaire lui-même. Chaque musique donne un combat différent.",
+    stack: ["Godot 4.7", "GDScript", "Analyse audio"],
+    links: [
+      { label: "Jouer sur itch.io", url: "https://zenkyr.itch.io/aria-protocol" },
+      { label: "Code", url: "https://github.com/ZenkyR/Aria_Protocole" },
+    ],
   },
   {
     name: "WebWatcher",
@@ -58,5 +69,6 @@ export const projects: Project[] = [
     detail:
       "Overlay système Android en Kotlin natif. Toute la difficulté tient en une phrase : ne capter que les touches qui visent le sprite et laisser passer les autres, sinon l'app en dessous devient inutilisable.",
     stack: ["Kotlin", "Live2D Cubism", "OpenGL ES", "Android"],
+    links: [{ label: "Code", url: "https://github.com/ZenkyR/foxgirlsupremacy" }],
   },
 ];

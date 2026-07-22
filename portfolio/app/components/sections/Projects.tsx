@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import ArrowUpRight from "@/app/components/ui/ArrowUpRight";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import { revealDelayed } from "@/app/lib/motion";
 import Portal from "@/app/components/thumbs/Portal";
@@ -16,6 +17,7 @@ import {
 
 const statusStyles: Record<ProjectStatus, string> = {
   encours: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
+  jouable: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
   prototype: "border-accent/30 bg-accent-strong/10 text-accent",
   abandonne: "border-white/10 bg-white/5 text-muted",
 };
@@ -75,14 +77,31 @@ const Projects = () => (
               </li>
             ))}
           </ul>
+
+          {project.links && (
+            <div className="mt-5 flex flex-wrap gap-4 border-t border-white/5 pt-4">
+              {project.links.map(({ label, url }) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link inline-flex items-center gap-1.5 text-sm text-paper/80 transition-colors hover:text-accent"
+                >
+                  {label}
+                  <ArrowUpRight className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                </a>
+              ))}
+            </div>
+          )}
         </motion.article>
         );
       })}
     </div>
 
     <motion.p {...revealDelayed(4, 0.08)} className="mt-8 text-xs text-muted/70 sm:text-sm">
-      Pas de liens : tout est en dépôt privé. J&apos;en ouvrirai peut-être un jour, si
-      j&apos;y pense. Certains oui, d&apos;autres non. À voir.
+      Les autres restent en dépôt privé. J&apos;en ouvrirai peut-être d&apos;autres, si j&apos;y
+      pense.
     </motion.p>
   </section>
 );

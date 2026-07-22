@@ -45,9 +45,8 @@ const Hero = () => {
         transition={{ duration: 0.8, delay: 0.7 }}
         className="mt-6 text-[length:var(--text-lead)] text-muted max-w-md leading-snug text-balance sm:mt-8 sm:max-w-xl sm:leading-relaxed"
       >
-        Je passe mon temps libre à construire des systèmes : des moteurs, des overlays, des
-        mondes qui tiennent mal debout. Beaucoup finissent au fond d&apos;un dossier, et
-        c&apos;est très bien comme ça.
+        Je code des sites la journée. Le soir je code autre chose, et ça finit rarement
+        quelque part.
       </motion.p>
 
       <motion.div
