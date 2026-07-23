@@ -2,6 +2,7 @@ import { person } from "@/app/config/site";
 
 const links = [
   { href: person.gitHub, label: "GitHub" },
+  { href: person.itch, label: "itch.io" },
   { href: person.linkedIn, label: "LinkedIn" },
   { href: person.companyUrl, label: "GOTH" },
 ];
@@ -19,7 +20,7 @@ const Footer = () => (
           <a
             href={person.repoUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="underline decoration-muted/40 underline-offset-4 transition-colors hover:text-accent"
           >
             sur GitHub
@@ -33,7 +34,7 @@ const Footer = () => (
             key={label}
             href={href}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="me noopener noreferrer"
             className="font-mono text-xs uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent"
           >
             {label}

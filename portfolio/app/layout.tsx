@@ -79,7 +79,7 @@ const jsonLd = {
   url: siteUrl,
   jobTitle: person.jobTitle,
   description,
-  sameAs: [person.companyUrl, person.linkedIn, person.gitHub],
+  sameAs: [person.companyUrl, person.linkedIn, person.gitHub, person.itch],
   worksFor: {
     "@type": "Organization",
     name: person.company,

@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/app/config/site";
+import { lastUpdated, siteUrl } from "@/app/config/site";
 
 const sitemap = (): MetadataRoute.Sitemap => [
   {
     url: siteUrl,
-    lastModified: new Date(),
+    lastModified: lastUpdated,
     changeFrequency: "monthly",
     priority: 1,
   },

@@ -11,7 +11,11 @@ export const person = {
   linkedIn: "https://www.linkedin.com/in/kezon-lacheteau-911656216/",
   gitHub: "https://github.com/ZenkyR",
   repoUrl: "https://github.com/ZenkyR/Portfolio",
+  itch: "https://zenkyr.itch.io",
 };
+
+// À bumper quand le contenu de la page change, pas à chaque déploiement
+export const lastUpdated = "2026-07-23";
 
 export const title = "Kezon Lacheteau — Développeur | Fondateur de GOTH";
 
