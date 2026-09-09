@@ -16,20 +16,20 @@ export const career: CareerStep[] = [
     url: person.companyUrl,
   },
   {
-    period: "2023 — 2024",
+    period: "2023-2024",
     role: "Développeur Full-Stack Symfony/Vue.js",
     org: "Avicom'",
     url: "https://avicom.fr/",
   },
   {
-    period: "2022 — 2024",
+    period: "2022-2024",
     role: "Formation Développeur Web",
     org: "Epitech",
     url: "https://www.epitech.eu/",
   },
   {
     period: "Tous les soirs",
-    role: "Le reste, celui qui ne tient pas sur un CV",
+    role: "Le reste",
     org: "Voir plus bas",
     url: "#projects",
     internal: true,

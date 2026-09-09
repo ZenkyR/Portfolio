@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { ogSubtitle, person } from "@/app/config/site";
 
-export const alt = `${person.name} — ${person.tagline}`;
+export const alt = `${person.name}, ${person.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
