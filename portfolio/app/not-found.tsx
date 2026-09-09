@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Background from "@/app/components/layout/Background";
 
 export const metadata: Metadata = {
@@ -9,22 +10,31 @@ export const metadata: Metadata = {
 const NotFound = () => (
   <>
     <Background />
-    <main className="flex min-h-svh flex-col items-center justify-center px-6 text-center">
-      <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-6">Erreur 404</p>
-      <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6">
-        Cette page n&apos;est pas là
+    <main className="flex min-h-svh flex-col justify-center max-w-5xl mx-auto px-6 py-24">
+      <div className="flex items-center gap-4 mb-4">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Erreur 404</p>
+        <span className="h-px flex-1 bg-linear-to-r from-accent/50 to-transparent" />
+      </div>
+
+      <h1 className="text-[length:var(--text-display)] font-semibold tracking-[-0.045em] leading-[0.88]">
+        <span className="block py-[0.06em] text-gradient">Page</span>
+        <span className="block py-[0.06em] text-gradient">introuvable</span>
       </h1>
-      <p className="text-muted max-w-md mb-10 leading-relaxed">
-        Elle est peut-être ailleurs, dans une autre pièce. Le portail, lui, ne s&apos;ouvre que
-        dans un sens.
+
+      <p className="mt-6 text-[length:var(--text-lead)] text-muted max-w-md leading-snug text-balance sm:mt-8 sm:max-w-xl sm:leading-relaxed">
+        Soit l&apos;adresse est fausse, soit j&apos;ai supprimé la page sans faire de
+        redirection. Statistiquement, c&apos;est la deuxième.
       </p>
-      <a
-        href="/"
-        className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-accent-strong to-fuchsia px-6 py-3 text-sm font-medium text-white shadow-[0_10px_40px_-10px] shadow-accent-strong/70 transition-shadow duration-300 hover:shadow-[0_14px_50px_-8px] hover:shadow-fuchsia/70"
-      >
-        <span className="transition-transform duration-300 group-hover:-translate-x-0.5">←</span>
-        Revenir à l&apos;accueil
-      </a>
+
+      <div className="mt-8 sm:mt-12">
+        <Link
+          href="/"
+          className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-accent-strong to-fuchsia px-6 py-3 text-sm font-medium text-white sm:px-7 sm:py-3.5 shadow-[0_10px_40px_-10px] shadow-accent-strong/70 transition-shadow duration-300 hover:shadow-[0_14px_50px_-8px] hover:shadow-fuchsia/70"
+        >
+          <span className="transition-transform duration-300 group-hover:-translate-x-0.5">←</span>
+          Revenir à l&apos;accueil
+        </Link>
+      </div>
     </main>
   </>
 );
