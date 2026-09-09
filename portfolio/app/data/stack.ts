@@ -1,6 +1,8 @@
 export type StackGroup = {
   label: string;
   items: string[];
+  tornado?: boolean;
+  note?: string;
 };
 
 export const stack: StackGroup[] = [
@@ -44,5 +46,7 @@ export const stack: StackGroup[] = [
       "Argumenter contre un moteur de jeu",
       "Lire des licences propriétaires",
     ],
+    tornado: true,
+    note: "ça tourne, c'est cool non ?",
   },
 ];

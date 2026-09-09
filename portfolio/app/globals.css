@@ -111,6 +111,102 @@
   }
 }
 
+@keyframes tornado-orbit {
+  0% {
+    transform: translateX(calc(-50% - var(--drift))) rotateY(0deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  12.5% {
+    transform: translateX(calc(-50% + var(--drift))) rotateY(-45deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  25% {
+    transform: translateX(calc(-50% - var(--drift))) rotateY(-90deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  37.5% {
+    transform: translateX(calc(-50% + var(--drift))) rotateY(-135deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  50% {
+    transform: translateX(calc(-50% - var(--drift))) rotateY(-180deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  62.5% {
+    transform: translateX(calc(-50% + var(--drift))) rotateY(-225deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  75% {
+    transform: translateX(calc(-50% - var(--drift))) rotateY(-270deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  87.5% {
+    transform: translateX(calc(-50% + var(--drift))) rotateY(-315deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+  100% {
+    transform: translateX(calc(-50% - var(--drift))) rotateY(-360deg)
+      translateZ(calc(var(--radius) * var(--tornado-scale)));
+  }
+}
+
+@keyframes tornado-depth {
+  0%,
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  50% {
+    opacity: 0.16;
+    filter: blur(2px);
+  }
+}
+
+.tornado {
+  --tornado-scale: 0.5;
+  position: relative;
+  width: 100%;
+  perspective: 900px;
+  perspective-origin: 50% 25%;
+  transform-style: preserve-3d;
+}
+
+.tornado-item {
+  position: absolute;
+  left: 50%;
+  top: var(--top);
+  white-space: nowrap;
+  animation:
+    tornado-orbit var(--spin) linear infinite,
+    tornado-depth var(--spin) ease-in-out infinite;
+  animation-delay: calc(var(--spin) * var(--phase) * -1);
+}
+
+@media (min-width: 640px) {
+  .tornado {
+    --tornado-scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tornado {
+    height: auto !important;
+    perspective: none;
+    transform-style: flat;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.375rem;
+  }
+
+  .tornado-item {
+    position: static;
+    transform: none;
+    opacity: 1;
+    filter: none;
+  }
+}
+
 @keyframes shimmer {
   to {
     background-position: 200% center;
