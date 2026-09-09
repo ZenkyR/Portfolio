@@ -111,6 +111,394 @@
   }
 }
 
+@keyframes critter-roam {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  25% {
+    translate: var(--wx) calc(var(--wy) * -1);
+  }
+  50% {
+    translate: calc(var(--wx) * -0.8) var(--wy);
+  }
+  75% {
+    translate: calc(var(--wx) * 0.6) calc(var(--wy) * 0.7);
+  }
+}
+
+@keyframes critter-squish {
+  0%,
+  100% {
+    border-radius: 58% 42% 55% 45% / 52% 48% 52% 48%;
+  }
+  33% {
+    border-radius: 44% 56% 38% 62% / 58% 42% 58% 42%;
+  }
+  66% {
+    border-radius: 62% 38% 64% 36% / 40% 62% 38% 60%;
+  }
+}
+
+@keyframes critter-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes critter-blow {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+    filter: blur(16px);
+  }
+}
+
+@keyframes shock {
+  from {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+  }
+}
+
+@keyframes card-breathe {
+  0%,
+  100% {
+    border-radius: 2rem 1.25rem 1.75rem 1.5rem / 1.5rem 1.75rem 1.25rem 2rem;
+  }
+  50% {
+    border-radius: 1.25rem 2rem 1.25rem 2rem / 2rem 1.25rem 2rem 1.25rem;
+  }
+}
+
+@media (min-width: 640px) {
+  @keyframes card-breathe {
+    0%,
+    100% {
+      border-radius: 3.5rem 1.75rem 3rem 2.25rem / 2.5rem 3rem 1.75rem 3.5rem;
+    }
+    50% {
+      border-radius: 2rem 3.25rem 2rem 3.5rem / 3.5rem 2rem 3.25rem 2rem;
+    }
+  }
+}
+
+@keyframes card-reform {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes card-reform-centred {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0);
+  }
+}
+
+.swarm {
+  --spread: 0.62;
+  --flee-scale: 0.4;
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+@media (min-width: 640px) {
+  .swarm {
+    --spread: 1;
+    --flee-scale: 1;
+    overflow: visible;
+  }
+}
+
+.critter-slot {
+  position: absolute;
+  left: calc(50% + (var(--x) - 50%) * var(--spread));
+  transform: translate(-50%, -50%)
+    translate(
+      calc(var(--flee-x, 0px) * var(--flee-scale)),
+      calc(var(--flee-y, 0px) * var(--flee-scale))
+    );
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.critter-dodge {
+  translate: var(--dodge-x, 0px) var(--dodge-y, 0px);
+  transition: translate 0.18s ease-out;
+}
+
+.critter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  animation: critter-roam var(--roam) ease-in-out infinite;
+  animation-delay: var(--roam-delay);
+  transition: opacity 0.4s;
+}
+
+.critter-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 3.4rem;
+  height: 3rem;
+  background: radial-gradient(
+    circle at 35% 30%,
+    hsl(var(--hue) 90% 72% / 0.95),
+    hsl(var(--hue) 80% 52% / 0.85)
+  );
+  box-shadow:
+    0 0 26px -4px hsl(var(--hue) 90% 60% / 0.7),
+    inset 0 -6px 14px hsl(var(--hue) 70% 30% / 0.5);
+  animation: critter-squish calc(var(--roam) * 0.55) ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .critter-body {
+    width: 4.2rem;
+    height: 3.7rem;
+  }
+}
+
+.critter-eye {
+  width: 0.55rem;
+  height: 0.7rem;
+  border-radius: 9999px;
+  background: #0b0714;
+  animation: critter-blink var(--blink) ease-in-out infinite;
+}
+
+.critter-name {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: hsl(var(--hue) 70% 84%);
+  text-shadow: 0 1px 8px hsl(var(--hue) 80% 20% / 0.9);
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .critter-name {
+    font-size: 0.8rem;
+  }
+}
+
+.critter:hover .critter-body {
+  animation-duration: calc(var(--roam) * 0.22);
+}
+
+.critter.is-numb {
+  --hue: 0;
+}
+
+.critter.is-numb .critter-body {
+  background: hsl(0 0% 40% / 0.35);
+  box-shadow: none;
+  animation-duration: calc(var(--roam) * 4);
+}
+
+.critter.is-numb .critter-eye {
+  animation: none;
+  height: 0.16rem;
+  background: hsl(0 40% 60% / 0.7);
+}
+
+.critter.is-numb .critter-name {
+  color: hsl(0 15% 62%);
+  text-shadow: none;
+}
+
+.critter.is-numb {
+  animation-duration: calc(var(--roam) * 3.4);
+}
+
+.critter.is-scared {
+  opacity: 0.3;
+  animation-duration: calc(var(--roam) * 0.35);
+}
+
+.critter.is-blown {
+  animation: critter-blow 0.42s cubic-bezier(0.3, 0, 0.7, 1) forwards;
+  pointer-events: none;
+}
+
+.shockwave {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--hue) 90% 70% / 0.8);
+  animation: shock 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+.critter-card {
+  position: relative;
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 2rem 1.25rem 1.75rem 1.5rem / 1.5rem 1.75rem 1.25rem 2rem;
+  animation: card-breathe 9s ease-in-out infinite;
+  border: 1px solid hsl(var(--hue) 80% 70% / 0.4);
+  background:
+    radial-gradient(120% 90% at 12% 0%, hsl(var(--hue) 70% 45% / 0.28), transparent 62%),
+    color-mix(in srgb, var(--color-ink) 90%, transparent);
+  box-shadow: 0 30px 90px -30px hsl(var(--hue) 80% 40% / 0.75);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  transform: scale(0.86);
+}
+
+@media (min-width: 640px) {
+  .critter-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(46rem, 100%);
+    padding: 2rem;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+.critter-card.is-reformed {
+  animation:
+    card-reform 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+    card-breathe 9s ease-in-out infinite;
+}
+
+@media (min-width: 640px) {
+  .critter-card.is-reformed {
+    animation:
+      card-reform-centred 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+      card-breathe 9s ease-in-out infinite;
+  }
+}
+
+.critter-watch {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.critter-watch span {
+  width: 0.5rem;
+  height: 0.65rem;
+  border-radius: 9999px;
+  background: hsl(var(--hue) 60% 80% / 0.55);
+  animation: critter-blink 6s ease-in-out infinite;
+}
+
+.critter-watch span:last-child {
+  animation-delay: 0.12s;
+}
+
+.critter-portrait {
+  display: flex;
+  height: 6rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid hsl(var(--hue) 70% 70% / 0.2);
+  background: hsl(var(--hue) 60% 12% / 0.6);
+}
+
+@media (min-width: 640px) {
+  .critter-portrait {
+    height: auto;
+    width: 11rem;
+  }
+}
+
+.critter-badge {
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--hue) 70% 70% / 0.3);
+  background: hsl(var(--hue) 70% 60% / 0.12);
+  padding: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: hsl(var(--hue) 60% 80%);
+}
+
+.critter-tag {
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--hue) 70% 70% / 0.25);
+  background: hsl(var(--hue) 70% 55% / 0.12);
+  padding: 0.25rem 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: hsl(var(--hue) 65% 82%);
+}
+
+.critter-release {
+  margin-left: auto;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--hue) 70% 70% / 0.35);
+  background: hsl(var(--hue) 70% 55% / 0.15);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--hue) 60% 88%);
+  transition: background 0.3s;
+}
+
+.critter-release:hover {
+  background: hsl(var(--hue) 70% 55% / 0.28);
+}
+
+@keyframes vital-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.vital {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.vital-track {
+  width: 200%;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.vital-beating {
+  animation: vital-scroll var(--pulse) linear infinite;
+}
+
 @keyframes tornado-orbit {
   0% {
     transform: translateX(calc(-50% - var(--drift))) rotateY(0deg)

@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import ArrowUpRight from "@/app/components/ui/ArrowUpRight";
 import SectionHeading from "@/app/components/ui/SectionHeading";
-import { revealDelayed } from "@/app/lib/motion";
+import ProjectSwarm from "@/app/components/ui/ProjectSwarm";
+import { reveal, revealDelayed } from "@/app/lib/motion";
 import Portal from "@/app/components/thumbs/Portal";
 import Spectrum from "@/app/components/thumbs/Spectrum";
 import Checks from "@/app/components/thumbs/Checks";
@@ -11,20 +11,7 @@ import Overlay from "@/app/components/thumbs/Overlay";
 import Clues from "@/app/components/thumbs/Clues";
 import Funnel from "@/app/components/thumbs/Funnel";
 import Rose from "@/app/components/thumbs/Rose";
-import {
-  projects,
-  statusLabel,
-  type ProjectStatus,
-  type ProjectThumb,
-} from "@/app/data/projects";
-
-const statusStyles: Record<ProjectStatus, string> = {
-  encours: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
-  jouable: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
-  termine: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
-  prototype: "border-accent/30 bg-accent-strong/10 text-accent",
-  abandonne: "border-white/10 bg-white/5 text-muted",
-};
+import { projects, type ProjectThumb } from "@/app/data/projects";
 
 const thumbs: Record<ProjectThumb, () => React.JSX.Element> = {
   portal: Portal,
@@ -42,69 +29,12 @@ const Projects = () => (
       id="projects"
       index="04"
       title="Projets"
-      intro="Deux d'entre eux tournent tous les jours. Les autres n'ont jamais eu ni client ni date de rendu, et c'était l'intérêt."
+      intro="Sept bestioles. Certaines sont mortes. Attrapez-en une, mais à vos risques."
     />
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {projects.map((project, index) => {
-        const Thumb = thumbs[project.thumb];
-
-        return (
-        <motion.article
-          key={project.name}
-          {...revealDelayed(index, 0.08)}
-          className="glass glass-hover flex flex-col rounded-2xl p-5 sm:p-6 md:p-8"
-        >
-          <div
-            aria-hidden="true"
-            className="mb-5 flex h-24 items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-black/20 sm:mb-6 sm:h-28"
-          >
-            <Thumb />
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <h3 className="text-xl font-semibold tracking-tight">{project.name}</h3>
-            <span
-              className={`rounded-full border px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.12em] ${statusStyles[project.status]}`}
-            >
-              {statusLabel(project)}
-            </span>
-          </div>
-
-          <p className="mb-3 text-paper/90 text-balance">{project.summary}</p>
-          <p className="mb-6 text-sm leading-relaxed text-muted">{project.detail}</p>
-
-          <ul className="mt-auto flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
-              <li
-                key={tech}
-                className="rounded-full border border-accent/20 bg-accent-strong/10 px-2.5 py-1 font-mono text-[0.65rem] text-accent"
-              >
-                {tech}
-              </li>
-            ))}
-          </ul>
-
-          {project.links && (
-            <div className="mt-5 flex flex-wrap gap-4 border-t border-white/5 pt-4">
-              {project.links.map(({ label, url }) => (
-                <a
-                  key={url}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 text-sm text-paper/80 transition-colors hover:text-accent"
-                >
-                  {label}
-                  <ArrowUpRight className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                </a>
-              ))}
-            </div>
-          )}
-        </motion.article>
-        );
-      })}
-    </div>
+    <motion.div {...reveal}>
+      <ProjectSwarm thumbs={thumbs} />
+    </motion.div>
 
     <motion.p
       {...revealDelayed(projects.length, 0.08)}
