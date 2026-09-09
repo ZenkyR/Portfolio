@@ -46,11 +46,11 @@ const Hero = () => {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.85 }}
-        className="mt-8 flex flex-wrap items-center gap-3 sm:mt-12 sm:gap-4"
+        className="mt-8 flex items-stretch gap-2.5 sm:mt-12 sm:flex-wrap sm:items-center sm:gap-4"
       >
         <a
           href="#projects"
-          className="group inline-flex items-center gap-2 rounded-full bg-linear-to-r from-accent-strong to-fuchsia px-6 py-3 text-sm font-medium text-white sm:px-7 sm:py-3.5 shadow-[0_10px_40px_-10px] shadow-accent-strong/70 transition-shadow duration-300 hover:shadow-[0_14px_50px_-8px] hover:shadow-fuchsia/70"
+          className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-linear-to-r from-accent-strong to-fuchsia px-4 py-3 text-center text-xs font-medium text-white sm:flex-none sm:px-7 sm:py-3.5 sm:text-sm shadow-[0_10px_40px_-10px] shadow-accent-strong/70 transition-shadow duration-300 hover:shadow-[0_14px_50px_-8px] hover:shadow-fuchsia/70"
         >
           Voir les projets
           <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
@@ -59,7 +59,7 @@ const Hero = () => {
           href={person.companyUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="glass glass-hover group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium sm:px-7 sm:py-3.5"
+          className="glass glass-hover group inline-flex flex-1 items-center justify-center gap-2 rounded-full px-4 py-3 text-center text-xs font-medium sm:flex-none sm:px-7 sm:py-3.5 sm:text-sm"
         >
           Mon activité, c&apos;est {person.companyShort}
           <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
