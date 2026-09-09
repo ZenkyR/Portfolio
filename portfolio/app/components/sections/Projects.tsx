@@ -8,6 +8,9 @@ import Portal from "@/app/components/thumbs/Portal";
 import Spectrum from "@/app/components/thumbs/Spectrum";
 import Checks from "@/app/components/thumbs/Checks";
 import Overlay from "@/app/components/thumbs/Overlay";
+import Clues from "@/app/components/thumbs/Clues";
+import Funnel from "@/app/components/thumbs/Funnel";
+import Rose from "@/app/components/thumbs/Rose";
 import {
   projects,
   statusLabel,
@@ -18,6 +21,7 @@ import {
 const statusStyles: Record<ProjectStatus, string> = {
   encours: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
   jouable: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
+  termine: "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
   prototype: "border-accent/30 bg-accent-strong/10 text-accent",
   abandonne: "border-white/10 bg-white/5 text-muted",
 };
@@ -27,6 +31,9 @@ const thumbs: Record<ProjectThumb, () => React.JSX.Element> = {
   spectrum: Spectrum,
   checks: Checks,
   overlay: Overlay,
+  clues: Clues,
+  funnel: Funnel,
+  rose: Rose,
 };
 
 const Projects = () => (
@@ -35,7 +42,7 @@ const Projects = () => (
       id="projects"
       index="04"
       title="Projets"
-      intro="Aucun n'a de client, aucun n'a de date de rendu. C'est exactement l'intérêt."
+      intro="Deux d'entre eux tournent pour de vrai et me servent tous les jours. Les autres n'ont jamais eu ni client ni date de rendu, et c'était l'intérêt."
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -99,7 +106,10 @@ const Projects = () => (
       })}
     </div>
 
-    <motion.p {...revealDelayed(4, 0.08)} className="mt-8 text-xs text-muted/70 sm:text-sm">
+    <motion.p
+      {...revealDelayed(projects.length, 0.08)}
+      className="mt-8 text-xs text-muted/70 sm:text-sm"
+    >
       Les autres restent en dépôt privé. J&apos;en ouvrirai peut-être d&apos;autres, si j&apos;y
       pense.
     </motion.p>
