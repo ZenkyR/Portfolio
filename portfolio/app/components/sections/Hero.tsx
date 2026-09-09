@@ -9,20 +9,14 @@ const lines = person.name.split(" ");
 const Hero = () => {
   return (
     <section id="home" className="flex flex-col justify-center max-w-5xl mx-auto px-6 pt-24 pb-16 md:pt-32 md:pb-24">
-      <motion.div
+      <motion.p
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="glass inline-flex w-fit items-center gap-2.5 rounded-full px-3.5 py-2 mb-8 sm:px-4 sm:mb-10"
+        className="mb-8 font-mono text-[0.58rem] uppercase tracking-[0.1em] text-accent sm:mb-10 sm:text-[0.7rem] sm:tracking-[0.18em]"
       >
-        <span className="relative flex size-2">
-          <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75" />
-          <span className="relative inline-flex size-2 rounded-full bg-accent" />
-        </span>
-        <span className="font-mono text-[0.58rem] uppercase tracking-[0.1em] text-paper/80 sm:text-[0.7rem] sm:tracking-[0.18em]">
-          {person.tagline}
-        </span>
-      </motion.div>
+        {person.tagline}
+      </motion.p>
 
       <h1 className="text-[length:var(--text-display)] font-semibold tracking-[-0.045em] leading-[0.88]">
         {lines.map((line, index) => (
@@ -45,8 +39,7 @@ const Hero = () => {
         transition={{ duration: 0.8, delay: 0.7 }}
         className="mt-6 text-[length:var(--text-lead)] text-muted max-w-md leading-snug text-balance sm:mt-8 sm:max-w-xl sm:leading-relaxed"
       >
-        Je code des sites la journée. Le soir je code autre chose, et ça finit rarement
-        quelque part.
+        Je code des sites la journée. Le soir je code autre chose... le code est vivant il me parle.
       </motion.p>
 
       <motion.div
