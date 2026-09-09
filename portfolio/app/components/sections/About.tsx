@@ -20,13 +20,15 @@ const About = () => (
         >
           {person.company}
         </a>{" "}
-        : des sites sur mesure pour des artisans, des indépendants et des petites entreprises,
-        écrits à la main, et suivis après la livraison.
+        : des sites sur mesure pour les artisans, les indépendants et les petites entreprises,
+        écrits à la main plutôt que sortis d&apos;un template, et suivis dans la durée.
       </p>
       <p className="text-[length:var(--text-lead)] leading-relaxed text-balance">
-        Le reste du temps, je fais autre chose. Des jeux, des outils, des choses sans nom qui
-        partent d&apos;une question idiote et prennent six mois. C&apos;est nettement moins
-        rentable, et c&apos;est là que j&apos;apprends le plus.
+        Le reste du temps, je fais autre chose. J&apos;ai fait tenir des personnages par-dessus
+        les autres applications, transformé des musiques en adversaires, essayé de rendre
+        lisible un espace qui avait cessé d&apos;être euclidien. En ce moment c&apos;est encore
+        autre chose. C&apos;est nettement moins rentable, et c&apos;est là que j&apos;apprends le
+        plus.
       </p>
       <p className="text-muted leading-relaxed">
         Ce site est ma page perso. Pour les prestations, tout se passe sur{" "}

@@ -29,7 +29,8 @@ const ContactSection = () => {
           </h2>
           <p className="text-sm text-muted max-w-lg mx-auto mb-8 leading-relaxed sm:text-base sm:mb-10">
             C&apos;est mon métier, et ça se passe chez {person.companyShort} : sites sur mesure,
-            maintenance, dépannage. Pour tout le reste, écrivez quand même.
+            maintenance, informatique. Si c&apos;est plutôt une idée bizarre notée à 3h du matin,
+            écrivez quand même, on verra ce qu&apos;on peut en tirer.
           </p>
 
           <a

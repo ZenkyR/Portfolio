@@ -42,7 +42,7 @@ const Projects = () => (
       id="projects"
       index="04"
       title="Projets"
-      intro="Deux d'entre eux tournent tous les jours. Les autres n'ont jamais eu ni client ni date de rendu."
+      intro="Deux d'entre eux tournent tous les jours. Les autres n'ont jamais eu ni client ni date de rendu, et c'était l'intérêt."
     />
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -110,7 +110,8 @@ const Projects = () => (
       {...revealDelayed(projects.length, 0.08)}
       className="mt-8 text-xs text-muted/70 sm:text-sm"
     >
-      Les autres restent en dépôt privé.
+      Les autres restent en dépôt privé. J&apos;en ouvrirai peut-être d&apos;autres, si j&apos;y
+      pense.
     </motion.p>
   </section>
 );

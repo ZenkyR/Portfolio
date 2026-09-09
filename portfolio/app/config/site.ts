@@ -20,7 +20,7 @@ export const lastUpdated = "2026-09-09";
 export const title = "Kezon Lacheteau Développeur | Fondateur de GOTH";
 
 export const description =
-  "Page personnelle de Kezon Lacheteau, développeur et fondateur de GOTH - Global Online Tech Hub. Le jour, des sites pour des artisans et des petites entreprises. Le reste du temps, des jeux et des outils.";
+  "Page personnelle de Kezon Lacheteau, développeur et fondateur de GOTH - Global Online Tech Hub. Le reste du temps : des jeux, des moteurs, des outils, et beaucoup d'idées qui ne verront jamais le jour.";
 
 export const ogSubtitle =
   "Le jour, des sites web. Le reste du temps, à peu près n'importe quoi.";

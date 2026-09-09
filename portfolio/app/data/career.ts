@@ -29,7 +29,7 @@ export const career: CareerStep[] = [
   },
   {
     period: "Tous les soirs",
-    role: "Le reste",
+    role: "Le reste, celui qui ne tient pas sur un CV",
     org: "Voir plus bas",
     url: "#projects",
     internal: true,
