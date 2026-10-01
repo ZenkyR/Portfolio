@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Background from "@/app/components/layout/Background";
+import DocumentPage from "@/app/components/layout/DocumentPage";
 
 export const metadata: Metadata = {
   title: "Page introuvable",
@@ -8,9 +8,7 @@ export const metadata: Metadata = {
 };
 
 const NotFound = () => (
-  <>
-    <Background />
-    <main className="flex min-h-svh flex-col justify-center max-w-5xl mx-auto px-6 py-24">
+  <DocumentPage centered>
       <div className="flex items-center gap-4 mb-4">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">Erreur 404</p>
         <span className="h-px flex-1 bg-linear-to-r from-accent/50 to-transparent" />
@@ -35,8 +33,7 @@ const NotFound = () => (
           Revenir à l&apos;accueil
         </Link>
       </div>
-    </main>
-  </>
+  </DocumentPage>
 );
 
 export default NotFound;
